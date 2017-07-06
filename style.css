@@ -1,3 +1,17 @@
 table, th, td {
   border: 1px solid black;
 }
+
+th {
+  background: grey;
+}
+
+#food_table button {
+  background: url("../public/delete_button.png");
+  background-position: 0% 0%;
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+}
