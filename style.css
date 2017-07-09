@@ -1,9 +1,15 @@
-table, th, td {
-  border: 1px solid black;
+table{
+  border:1px solid #000;
+  width: 300px;
 }
 
 th {
-  background: grey;
+  font-size: 20px;
+}
+
+td,th {
+  border:none;
+  text-align: left;
 }
 
 #food_table button {
