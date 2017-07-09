@@ -1,3 +1,20 @@
+body {
+  font-family: sans-serif;
+}
+
+.add-food {
+    background-color: #16b7a4;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 table{
   border:1px solid #000;
   width: 300px;

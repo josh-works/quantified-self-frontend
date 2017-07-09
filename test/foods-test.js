@@ -49,6 +49,32 @@ test.describe('testing foods table', function() {
     })
   })
 
+  test.it("provides error if only name given for new food", function(){
+    driver.get(`${frontEndLocation}/foods.html`)
+    driver.wait(until.elementLocated({css: ".delete"}))
+    driver.findElement({css: ".food-form input[name=food-name]"})
+    .sendKeys("chocolate")
+    driver.findElement({css: "input[type=submit]"})
+    .click()
+    driver.findElement({css: ".cal-error p"}).getText()
+    .then(function(error){
+      assert.include(error, "Please enter a food calorie amount")
+    })
+  })
+
+  test.it("provides error if only calories given for new food", function(){
+    driver.get(`${frontEndLocation}/foods.html`)
+    driver.wait(until.elementLocated({css: ".delete"}))
+    driver.findElement({css: ".food-form input[name=food-calories]"})
+    .sendKeys("365")
+    driver.findElement({css: "input[type=submit]"})
+    .click()
+    driver.findElement({css: ".name-error p"}).getText()
+    .then(function(error){
+      assert.include(error, "Please enter a food name")
+    })
+  })
+
 
   test.it("can delete a food from table", function(){
     driver.get(`${frontEndLocation}/foods.html`)
