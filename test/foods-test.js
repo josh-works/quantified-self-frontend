@@ -60,14 +60,14 @@ test.describe('testing foods table', function() {
     })
   })
 
-  test.it("can update a food name", function(){
-    driver.get(`${frontEndLocation}/foods.html`)
-    driver.findElement({css: ".food-id-2 #fname"})
-    .sendKeys("banana-two")
-    driver.findElement({css: ".food-id-2"}).getText()
-    .then(function(row){
-      assert.include(row, "banana-two")
-    })
+  // test.it("can update a food name", function(){
+  //   driver.get(`${frontEndLocation}/foods.html`)
+  //   driver.findElement({css: ".food-id-2 #fname"})
+  //   .sendKeys("banana-two")
+  //   driver.findElement({css: ".food-id-2"}).getText()
+  //   .then(function(row){
+  //     assert.include(row, "banana-two")
+  //   })
+  // })
 
-  })
 })
