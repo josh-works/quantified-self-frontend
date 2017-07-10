@@ -29,6 +29,14 @@ td,th {
   text-align: left;
 }
 
+
+thead {color:green;}
+tbody {color:blue;}
+tfoot {color:red;}
+
+
+
+
 #food_table button {
   background: url("../public/delete_button.png");
   background-position: 0% 0%;
