@@ -3,8 +3,178 @@
 <head>
   <meta charset="utf-8">
   <title>Quantified Self - Diary</title>
+  <link href="style.css" rel="stylesheet">
+
 </head>
 <body>
+
+<!-- foods rendering -->
+  <h3>Create a New Food</h3>
+  <form class="food-form">
+    <label>name
+      <input name="food-name">
+    </label>
+    <br>
+    <div class="name-error">
+      <p>
+      </p>
+    </div>
+    <br>
+    <label>calories
+      <input name="food-calories">
+    </label>
+    <br>
+    <div class="cal-error">
+      <p>
+      </p>
+    </div>
+    <br>
+    <input class="add-food" type="submit" value="Add Food">
+  </form>
+
+  <h3>All Foods</h3>
+  <div class="table">
+  <table id="food_table">
+    <thead>
+      <th width="70%">Name</th>
+      <th width="20%">Calories</th>
+      <th>  </th>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+  </table>
+  </div>
+
+
+<!-- meals rendering -->
+  <div class="meals_partial">
+    <h1>Quantified Self Meals</h1>
+
+    <h2>Meals</h2>
+
+    <h3>Breakfast</h3>
+
+    <div class="meals_table">
+      <table id="breakfast_table">
+        <thead>
+          <th width="70%">Name</th>
+          <th width="20%">Calories</th>
+          <th>  </th>
+        </thead>
+        <tbody id="breakfast_foods_table">
+          <tr>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Calories: </td>
+            <td>
+              400
+            </td>
+          </tr>
+          <tr>
+            <td>Remaining Calories</td>
+            <td>100</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+    <h3>Lunch</h3>
+    <div class="meals_table">
+      <table id="lunch_table">
+        <thead>
+          <th width="70%">Name</th>
+          <th width="20%">Calories</th>
+          <th>  </th>
+        </thead>
+        <tbody id="lunch_meals_table">
+          <tr>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Calories: </td>
+            <td>
+              400
+            </td>
+          </tr>
+          <tr>
+            <td>Remaining Calories</td>
+            <td>100</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+    <h3>Dinner</h3>
+    <div class="meals_table">
+      <table id="dinner_table">
+        <thead>
+          <th width="70%">Name</th>
+          <th width="20%">Calories</th>
+          <th>  </th>
+        </thead>
+        <tbody id="dinner_meals_table">
+          <tr>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Calories: </td>
+            <td>
+              400
+            </td>
+          </tr>
+          <tr>
+            <td>Remaining Calories</td>
+            <td>100</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+
+    <h3>Snacks</h3>
+    <div class="meals_table">
+      <table id="snacks_table">
+        <thead>
+          <th width="70%">Name</th>
+          <th width="20%">Calories</th>
+          <th>  </th>
+        </thead>
+        <tbody id="snacks_meals_table">
+
+          <tr>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Calories: </td>
+            <td>
+              400
+            </td>
+          </tr>
+          <tr>
+            <td>Remaining Calories</td>
+            <td>100</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+
+  </div>
+
+
+
+
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   <script src="main.bundle.js"></script>
 </body>
