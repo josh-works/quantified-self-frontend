@@ -19,7 +19,7 @@ test.describe('meals tables', function() {
   })
 
   test.it("shows all meals", function() {
-  driver.get(`${frontEndLocation}/meals.html`)
+  driver.get(`${frontEndLocation}/`)
   driver.wait(until.elementLocated({css: "script[src='main.bundle.js']"}))
   driver.findElements({css: ".meals_table"})
   .then(mealsTables => {
