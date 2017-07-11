@@ -1,4 +1,4 @@
-html {
+/*html {
       box-sizing: border-box;
       background:#ffc600;
       font-family:'helvetica neue';
@@ -38,7 +38,7 @@ html {
       margin: 0;
       padding: 0;
       position: relative;
-      /*perspective:20px;*/
+      /*perspective:20px;
     }
     .suggestions li {
       background:white;
@@ -74,12 +74,12 @@ html {
       color:black;
       background:rgba(0,0,0,0.1);
       text-decoration: none;
-    }
+    }*/
 
 
 
 
-/*body {
+body {
   font-family: sans-serif;
 }
 
@@ -113,7 +113,7 @@ td,th {
 
 thead {color:green;}
 tbody {color:blue;}
-tfoot {color:red;}*/
+tfoot {color:red;}
 
 
 
