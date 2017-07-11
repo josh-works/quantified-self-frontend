@@ -113,10 +113,14 @@ td,th {
 
 thead {color:green;}
 tbody {color:blue;}
-tfoot {color:red;}
+tfoot {color:black;font-weight: bold;}
 
-
-
+.positive{
+  color:green;
+}
+.negative{
+  color:red;
+}
 
 #food_table button {
   background: url("../public/delete_button.png");
