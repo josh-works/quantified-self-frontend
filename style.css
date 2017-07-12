@@ -84,6 +84,7 @@ html {
   font-family:'helvetica neue';
   font-size: 20px;
   font-weight: 200;
+  text-align: center;
 }
 
 a {
@@ -142,9 +143,17 @@ input.meal-delete {
     cursor: pointer;
 }
 
-table{
+/*************Table Styling**************/
+
+table {
+  margin:50px auto;
   border:1px solid #000;
   width: 300px;
+  font-family: 'helvetica neue', sans-serif;
+  /*font-weight: 200;*/
+  /*font-size: 50px;*/
+  /*padding: 10px 25px;*/
+  text-align: center;
 }
 
 th {
@@ -156,24 +165,9 @@ td,th {
   text-align: left;
 }
 
-h1, h2, h3 {
-  font-family: 'helvetica neue', sans-serif;
-  font-weight: 200;
-  font-size: 50px;
-  padding: 10px 25px;
-  text-align: center;
-}
-
 thead {color:green;}
 tbody {color:blue;}
 tfoot {color:black;font-weight: bold;}
-
-.positive{
-  color:green;
-}
-.negative{
-  color:red;
-}
 
 #food_table button {
   background: url("../public/delete_button.png");
@@ -193,4 +187,21 @@ tfoot {color:black;font-weight: bold;}
 .meal-delete {
   height: 20px;
   width: 20px;
+}
+
+.positive{
+  color:green;
+}
+.negative{
+  color:red;
+}
+
+/******************* Header Stylings *********************/
+
+h1, h2, h3 {
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 200;
+  font-size: 50px;
+  padding: 10px 25px;
+  text-align: center;
 }
