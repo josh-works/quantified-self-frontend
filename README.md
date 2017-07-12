@@ -1,160 +1,189 @@
-# Quantified Self Webpack
+# Quantified Self
 
-To get you started building your Quantified Self app.
+What's in this README?
 
-## Initial Setup
+- [What's it do?](#whats-it-do)
+- [local setup instructions](#to-installrun-locally)
+- [API endpoint documentation](#api-documentation)
 
-One person from your project will set up the repository. That one person should follow these steps:
 
-1. Clone this starter kit repository and rename the repository to `quantified-self` in one command
+[Colleen Ward](https://github.com/caward12) and [Josh Thompson](https://github.com/josh-works) built a sweet calorie tracking application.
 
-  ```shell
-  git clone git@github.com:turingschool-examples/quantified-self-starter-kit.git quantified-self
-  ```
+Front-end available live at
 
-2. Change into the `quantified-self` directory
+- https://caward12.github.io/quantified-self-frontend/
 
-3. Remove the default remote (origin)
 
-  ```shell
-  git remote rm origin
-  ```
+Backend available at:
 
-4. Create a new repository on GitHub named `quantified-self`
+- Heroku: https://quantified-self-backend.herokuapp.com/
+- Github repo: https://github.com/caward12/quantified-self
 
-5. Add your new repository remote - **your remote URL and user name will be different in the command below**
 
-  ```shell
-  git remote add origin git@github.com:neight-allen/quantified-self.git
-  ```
 
-6. Install the dependencies of the starter kit
+## What's it do?
 
-  ```shell
-  npm install
-  ```
+A single-page application that accepts food items, which can be stored in meal tables.
 
-7. Add, commit, and push up to your repository
+There's no page reload, and every change is persisted in our database hosted on Heroku.
 
-  ```shell
-  git add .
-  git commit -m "Initial commit using starter kit"
-  git push origin master
-  ```
+## To install/run locally:
 
-8. Now add your team member(s) as collaborators to the repository. They can now clone down your `quantified-self` repository as normal.
-
-9. Once each partner clones down the repo, they need to run `npm install` to install the dependencies on their machine.
-
-## Github Pages setup
-
-1. Visit your repository on Github
-
-2. Go to Settings
-
-3. Under the Github Pages section of Options, select 'master' as your source
-
-Be sure to `npm run build` and commit before each push to master. A few seconds after you push up, you should be able to see your application at <https://your-github-username.github.io/quantified-self>.
-
-## Run the Server
-
-To see your code in action, you need to fire up a development server. Use the command:
+Clone front-end _and_ back-end down:
 
 ```shell
-npm start
+# clone front end
+$ git clone git@github.com:caward12/quantified-self-frontend.git
+
+# clone back-end
+$ git clone git@github.com:caward12/quantified-self.git
 ```
 
-Once the server is running, visit in your browser:
+Set up the repo, start `localhost`:
 
-* `http://localhost:8080/webpack-dev-server/` to run your application.
-* `http://localhost:8080/webpack-dev-server/test.html` to run your test suite in the browser.
+```shell
+# set up backend app
+$ cd quantified-self
+$ npm install
+$ knex migrate:latest
+$ knex seed:run
+$ npm start
 
-To build the static files. This must be done before committing and pushing if you want your site to work at github.io:
-
-```js
-npm run build
+# cd into front-end, install modules, start server
+$ cd quantified-self-frontend
+$ npm install
+$ npm start
 ```
 
-## Run Tests in the Terminal
+Open up on `localhost`:
 
-To run all of your tests:
+```
+http://localhost:8080/webpack-dev-server/
+```
+# API documentation
 
-```js
-npm test
+This is the API endpoints for the backend of this application.
+
+The backend is live on Heroku: https://quantified-self-backend.herokuapp.com/api/v1
+
+View the repo: https://github.com/caward12/quantified-self
+
+
+## Foods
+
+`GET /foods`
+
+Returns array of all active food objects, sorted in descending order based on `id`
+```
+[
+  {
+    id: 19,
+    name: "burger",
+    calories: 367,
+    created_at: "2017-07-12T23:09:14.295Z",
+    active: true
+  },
+  {
+    id: 18,
+    name: "popcorn",
+    calories: 50,
+    created_at: "2017-07-12T23:06:53.148Z",
+    active: true
+  }
+]
 ```
 
-## File Organization
+`GET /foods/:id`
 
-Webpack is a little opinionated about how files are organized. Here is a brief guide on how to organize development and test files.
+Returns specific food object
 
-### Development Files
-
-Node and webpack work together to help us organize our files and keep responsibilities separated.
-
-For example, if we have the `lib/index.js` file and a `lib/food.js` file:
-
-**lib/index.js**
-
-```javascript
-var Food = require('./food');
-
-var someFood = new Food();
+```
+  {
+    id: 18,
+    name: "popcorn",
+    calories: 50,
+    created_at: "2017-07-12T23:06:53.148Z",
+    active: false
+  }
 ```
 
-**lib/food.js**
 
-```javascript
-function Food(food, calories) {
-  this.name = name;
-  this.calories = calories;
+
+`POST /foods/`
+
+Requires `name` and `calories` in body
+```
+{
+  name: food_name,
+  calories: food_calories
+}
+```
+If successful, returns created `food` object and `202`
+
+
+
+`PUT /foods/:id`
+
+accepts `name` or `calories` in body, returns `202` if successful
+{
+  name: food_name,
+  calories: food_calories
 }
 
-Food.prototype.edit = function () {
-  //Some cool storage stuff here
-};
+`DELETE /foods/:id`
 
-module.exports = Food;
+Delete's specific food, if successful returns `200`
+
+
+## Meals
+
+`GET /:meal`
+
+Returns foods associated with meal name. Responds to:
+
+```
+/breakfast
+/lunch
+/dinner
+/snack
 ```
 
-All of the `food.js` code could live in the `index.js` file, but that would go against our philosophy of separating responsibility between files.
+Returns list of food objects:
 
-There are two main things to pay attention to here:
-
-1. At the top of the `index.js` file, we require the `food.js` file using the line of code `var Food = require('./food');` (we leave out the `.js`). This brings in the code from the `food.js` file so we can use that file's code in the `index.js` file.
-
-2. In the `food.js` file, the bottom line says `module.exports = Food;` which says what we want this file to export when we say `require` in other files, like in `index.js`.
-
-So now we have two files that can share code between each other, but we have to pay attention to what we export and what we require. If we didn't do this, then when we try to make a new Food in the `index.js` file, it won't know what Food we're talking about!
-
-### Test Files
-
-Near the end of quantified self, you will have multiple objects for your project that are tested separately with individual test files. The `test/index.js` file serves as an "entry point" for mocha to load all of the tests you write.
-
-Test file organization is a bit different from development files. If we want to test the `food.js` file from above, then this is how we would do it. For each object file (in this case `food.js`), we want to have a corresponding test file. So in the `test` directory, we would create a new file called `test/food-test.js`. Here is what that file would look like:
-
-**test/food-test.js**
-
-```javascript
-var chai = require('chai');
-var assert = chai.assert;
-
-var Food = require('../lib/food');
-
-describe('Food', function() {
-  context('can create a new food', function() {
-    // Your tests here...  
-  });  
-});
+```
+[
+  {
+    food_id: 6,
+    food_name: "cheerios",
+    food_calories: 190
+  },
+  {
+    food_id: 1,
+    food_name: "banana",
+    food_calories: 55
+  }
+]
 ```
 
-**test/index.js**
+`PUT /:meal`
 
-```javascript
-require('./food-test')
+Requires existing food id in message body:
+
+```
+{
+  id: 2
+}
 ```
 
-Two main points to pay attention to:
+Adds food item to specified meal, returns `202` if successful.
 
-1. In the `food-test.js` file, we require the `food.js` file so that we can construct foods in our tests.
+`DELETE /:meal`
 
-2. In the `test/index.js` file, we require the `food-test.js` file so that we can view the test results in the browser (at `http://localhost:8080/webpack-dev-server/test.html`). But most of the time, you'll just run your tests in the terminal with `npm test`
+Requires existing food id in message body:
+```
+{
+  id: 2
+}
+```
+
+Removes food from specified meal. Returns `202` if successful.
