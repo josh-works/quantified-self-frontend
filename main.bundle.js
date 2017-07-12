@@ -251,7 +251,7 @@
 	}
 
 	Food.prototype.createFood = function () {
-	  return $.post('http://localhost:3000/api/v1/foods/', { name: this.name, calories: this.calories }).then(function (foodObject) {
+	  return $.post(host + 'foods/', { name: this.name, calories: this.calories }).then(function (foodObject) {
 	    return new Food(foodObject);
 	  });
 	};
@@ -260,7 +260,7 @@
 	  return $.ajax({
 	    method: 'DELETE',
 	    contentType: 'application/json; charset=utf-8',
-	    url: 'http://localhost:3000/api/v1/foods/' + foodId,
+	    url: host + 'foods/' + foodId,
 	    dataType: 'json'
 	  });
 	};
@@ -269,7 +269,7 @@
 	  var data = { name: newName };
 	  return $.ajax({
 	    method: 'PUT',
-	    url: 'http://localhost:3000/api/v1/foods/' + id,
+	    url: host + 'foods/' + id,
 	    data: data
 	  });
 	};
@@ -278,13 +278,13 @@
 	  var data = { calories: newCalories };
 	  return $.ajax({
 	    method: 'PUT',
-	    url: 'http://localhost:3000/api/v1/foods/' + id,
+	    url: host + 'foods/' + id,
 	    data: data
 	  });
 	};
 
 	Food.getAllFoods = function () {
-	  return $.getJSON(`${host}/api/v1/foods`);
+	  return $.getJSON(`${host}foods`);
 	};
 
 	module.exports = Food;
@@ -10553,7 +10553,7 @@
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  host: 'http://localhost:3000'
+	  host: 'https://quantified-self-backend.herokuapp.com/api/v1/'
 	};
 
 /***/ }),
@@ -10570,7 +10570,7 @@
 	}
 
 	Meal.getMeal = function (meal) {
-	  return $.getJSON(`${host}/api/v1/${meal}`);
+	  return $.getJSON(host + meal);
 	};
 
 	Meal.prototype.toHTML = function () {
@@ -10598,7 +10598,7 @@
 	  var data = { id: foodId };
 	  return $.ajax({
 	    method: 'DELETE',
-	    url: 'http://localhost:3000/api/v1/' + mealName,
+	    url: host + mealName,
 	    data: data
 	  });
 	};
@@ -10607,7 +10607,7 @@
 	  var data = { name: foodName };
 	  return $.ajax({
 	    method: 'PUT',
-	    url: 'http://localhost:3000/api/v1/' + mealName,
+	    url: host + mealName,
 	    data: data
 	  });
 	};
