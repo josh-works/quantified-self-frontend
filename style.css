@@ -78,9 +78,55 @@
 
 
 
+html {
+  box-sizing: border-box;
+  background:#ffc600;
+  font-family:'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
 
-body {
-  font-family: sans-serif;
+a {
+  color:black;
+  background:rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+input {
+  width: 100%;
+  padding:20px;
+}
+
+.form {
+  max-width:400px;
+  margin:50px auto;
+}
+
+input.input {
+      margin: 0;
+      text-align: center;
+      outline:0;
+      border: 10px solid #F7F7F7;
+      width: 120%;
+      left: -10%;
+      position: relative;
+      top: 10px;
+      z-index: 2;
+      border-radius: 5px;
+      font-size: 40px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+    }
+
+input.meal-delete {
+  float:left;
+    font-size:.80em;
+    padding:0px;
+    text-align: center;
+
 }
 
 .add-food {
@@ -110,6 +156,13 @@ td,th {
   text-align: left;
 }
 
+h1, h2, h3 {
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 200;
+  font-size: 50px;
+  padding: 10px 25px;
+  text-align: center;
+}
 
 thead {color:green;}
 tbody {color:blue;}

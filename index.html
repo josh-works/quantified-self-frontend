@@ -10,9 +10,9 @@
 
 <!-- foods rendering -->
   <h3 id="create_new_food_link">Create a New Food</h3>
-  <form class="food-form">
-    <label>name
-      <input name="food-name">
+  <form class="food-form form">
+    <label>
+      <input name="food-name" class="input" placeholder="New Food Name">
     </label>
     <br>
     <div class="name-error">
@@ -20,8 +20,8 @@
       </p>
     </div>
     <br>
-    <label>calories
-      <input name="food-calories">
+    <label>
+      <input name="food-calories" class="input" placeholder="New Food Calories">
     </label>
     <br>
     <div class="cal-error">
@@ -33,9 +33,9 @@
   </form>
 
   <h3>All Foods</h3>
-  <form class="search-form">
+  <form class="search_form form">
     Filter Foods:
-    <input type="text" class="search" placeholder="Food Name">
+    <input type="text" class="search input" placeholder="Food Name">
 
   </form>
 
@@ -56,10 +56,8 @@
 
 
 <!-- meals rendering -->
-  <div class="meals_partial">
-    <h1>Quantified Self Meals</h1>
-
-    <h2>Meals</h2>
+  <div class="meals_list">
+    <h1>Meals</h1>
 
     <h3>Breakfast</h3>
 
@@ -210,9 +208,9 @@
 <a href="#create_new_food_link">Create New Food</a>
 
 <h2>Update Meals</h3>
-  <form class="search-form">
+  <form class="search-form form">
     Search by Name:
-    <input type="text" class="meals_search" placeholder="Food Name">
+    <input type="text" class="meals_search input" placeholder="Food Name">
 
   </form>
 
@@ -234,10 +232,10 @@
 
 Add selected to:
 <div id="meal_selections">
-  <button type="submit" data-meal="breakfast">Breakfast</button>
-  <button type="submit" data-meal="lunch">Lunch</button>
-  <button type="submit" data-meal="dinner">Dinner</button>
-  <button type="submit" data-meal="snack">Snacks</button>
+  <button type="submit" class="add-food" data-meal="breakfast">Breakfast</button>
+  <button type="submit" class="add-food" data-meal="lunch">Lunch</button>
+  <button type="submit" class="add-food" data-meal="dinner">Dinner</button>
+  <button type="submit" class="add-food" data-meal="snack">Snacks</button>
 </div>
 
 
