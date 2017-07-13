@@ -52,11 +52,14 @@
 
 	var foodsList = [];
 
-	Food.getAllFoods().then(function (data) {
-	  data.forEach(function (foodItem) {
-	    foodsList.push(foodItem);
+	function updateFoodsList() {
+	  Food.getAllFoods().then(function (data) {
+	    // foodsList = []
+	    data.forEach(function (foodItem) {
+	      foodsList.push(foodItem);
+	    });
 	  });
-	});
+	}
 
 	function findMatches(wordToMatch, foods) {
 	  return foods.filter(food => {
@@ -158,6 +161,8 @@
 
 	  Food.getAllFoods().then(createMealFoodsTable);
 
+	  updateFoodsList();
+
 	  searchInput.addEventListener('change', displayFoodMatches);
 	  searchInput.addEventListener('keyup', displayFoodMatches);
 	  mealSearchInput.addEventListener('change', displayMealFoodMatches);
@@ -222,13 +227,11 @@
 	      var newFood = getFoodForm();
 	      newFood.createFood().then(function (fullFood) {
 	        addRow(fullFood);
-	        $('.food-form').each(function () {
-	          this.reset();
-	        });
+	        $('.food-form').each(function () {});
 	        $('.name-error p').html("");
 	        $('.cal-error p').html("");
 	        // refresh mealfoods list
-	        Food.getAllFoods().then(createMealFoodsTable);
+	        Food.getAllFoods().then(createMealFoodsTable).then(updateFoodsList());
 	      });
 	    }
 	  });
