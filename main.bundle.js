@@ -67,35 +67,47 @@
 
 	function displayFoodMatches() {
 	  const matchArray = findMatches(this.value, foodsList);
-	  createTable(matchArray);
+	  createTable(matchArray, this.value);
 	}
 	function displayMealFoodMatches() {
 	  const matchArray = findMatches(this.value, foodsList);
-	  createMealFoodsTable(matchArray);
+	  createMealFoodsTable(matchArray, this.value);
 	}
 
 	const searchInput = document.querySelector('.search');
 	const mealSearchInput = document.querySelector('.meals_search');
 
-	function createTable(foods) {
+	function createTable(foods, matchedString) {
 	  const foodsTable = $("#food_table tbody").html("");
 	  foods.forEach(function (food) {
 	    const tableRow = document.createElement("tr");
 	    $(tableRow).addClass(`food-id-${food.id}`);
-	    $(tableRow).append(`<td id=fname><div contenteditable>${food.name}</div></td>`);
+	    if (matchedString) {
+	      let regex = new RegExp(matchedString, 'gi');
+	      const highlightedName = food.name.replace(regex, `<span class='hl'>${matchedString}</span>`);
+	      $(tableRow).append(`<td id=fname><div contenteditable>${highlightedName}</div></td>`);
+	    } else {
+	      $(tableRow).append(`<td id=fname><div contenteditable>${food.name}</div></td>`);
+	    }
 	    $(tableRow).append(`<td id=fcalories><div contenteditable>${food.calories}</div></td>`);
-	    $(tableRow).append(`<input type="image" class="delete" src="./public/delete_button.png" />`);
+	    $(tableRow).append(`<input type="image" class="delete" data-id="${food.id}" src="./public/delete_button.png" />`);
 	    foodsTable.append(tableRow);
 	  });
 	}
 
-	function createMealFoodsTable(foods) {
+	function createMealFoodsTable(foods, matchedString) {
 	  const mealFoodsTable = $("#meal_food_table tbody").html("");
 	  foods.forEach(function (food) {
 	    const tableRow = document.createElement("tr");
+	    let regex = new RegExp(matchedString, 'gi');
+	    const highlightedName = food.name.replace(regex, `<span class='hl'>${matchedString}</span>`);
 	    $(tableRow).addClass(`food-id-${food.id}`);
-	    $(tableRow).append(`<td id="checkbox"><input type='checkbox' / ></td>`);
-	    $(tableRow).append(`<td id=fname>${food.name}</td>`);
+	    $(tableRow).append(`<td id="checkbox"><input type='checkbox' data-name='${food.name}' / ></td>`);
+	    if (matchedString) {
+	      $(tableRow).append(`<td id=fname>${highlightedName}</td>`);
+	    } else {
+	      $(tableRow).append(`<td id=fname>${food.name}</td>`);
+	    }
 	    $(tableRow).append(`<td id=fcalories>${food.calories}</td>`);
 	    mealFoodsTable.append(tableRow);
 	  });
@@ -107,7 +119,7 @@
 	  $(tableRow).addClass(`food-id-${food.id}`);
 	  $(tableRow).append(`<td id=fname><div contenteditable>${food.name}</div></td>`);
 	  $(tableRow).append(`<td id=fcalories><div contenteditable>${food.calories}</div></td>`);
-	  $(tableRow).append(`<input type="image" class="delete" src="./public/delete_button.png" />`);
+	  $(tableRow).append(`<input type="image" class="delete" data-id="${food.id}" src="./public/delete_button.png" />`);
 	  foodsTable.prepend(tableRow);
 	}
 
@@ -141,6 +153,7 @@
 	}
 
 	$(function () {
+
 	  Food.getAllFoods().then(createTable);
 
 	  Food.getAllFoods().then(createMealFoodsTable);
@@ -151,7 +164,7 @@
 	  mealSearchInput.addEventListener('keyup', displayMealFoodMatches);
 
 	  $('table').on('click', '.delete', function (event) {
-	    var food_id = event.target.parentElement.className.split("-").pop();
+	    var food_id = event.target.dataset.id;
 	    $(event.target.parentElement).remove();
 	    Food.deleteFood(food_id);
 	  });
@@ -187,7 +200,7 @@
 	    var checkedFoods = Array.from($('#meal_food_table').find('input:checked'));
 	    checkedFoods.forEach(function (foodItem) {
 	      foodItem.checked = false;
-	      var foodName = foodItem.parentElement.nextSibling.innerHTML;
+	      var foodName = foodItem.dataset.name;
 	      var mealName = event.target.dataset.meal;
 	      Meal.addFoodsToMeal(foodName, mealName).then(function () {
 	        Meal.reloadAll();
