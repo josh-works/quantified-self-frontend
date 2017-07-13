@@ -54,7 +54,7 @@
 
 	function updateFoodsList() {
 	  Food.getAllFoods().then(function (data) {
-	    // foodsList = []
+	    foodsList = [];
 	    data.forEach(function (foodItem) {
 	      foodsList.push(foodItem);
 	    });
@@ -99,6 +99,14 @@
 	}
 
 	function createMealFoodsTable(foods, matchedString) {
+	  if (!foods) {
+	    console.log("!foods");
+	    // var foods = foodsList
+	    // console.log(foods);
+	    // var foods = foodsList
+	  } else {
+	    console.log(foods);
+	  }
 	  const mealFoodsTable = $("#meal_food_table tbody").html("");
 	  foods.forEach(function (food) {
 	    const tableRow = document.createElement("tr");
@@ -169,9 +177,12 @@
 	  mealSearchInput.addEventListener('keyup', displayMealFoodMatches);
 
 	  $('table').on('click', '.delete', function (event) {
+	    console.log("delete food: " + event.target.dataset.id);
 	    var food_id = event.target.dataset.id;
 	    $(event.target.parentElement).remove();
+	    $(`#meal_food_table tr.food-id-${food_id}`).remove();
 	    Food.deleteFood(food_id);
+	    // rebuild mealFoods table?
 	  });
 
 	  $('table').on('click', '.meal-delete', function (event) {
@@ -213,6 +224,7 @@
 	    });
 	  });
 
+	  // creating new food
 	  $(".food-form input[type=submit]").on("click", function (event) {
 	    event.preventDefault();
 	    var name = $(this).parent().find("input[name=food-name]").val();
