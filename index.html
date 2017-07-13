@@ -9,10 +9,9 @@
 <body>
 
 <!-- foods rendering -->
-<div class="body">
   <h3 id="create_new_food_link">Create a New Food</h3>
   <form class="food-form">
-    <label>name
+    <label>Food Name
       <input name="food-name" placeholder="New Food Name">
     </label>
     <br>
@@ -21,7 +20,7 @@
       </p>
     </div>
     <br>
-    <label>calories
+    <label>Food Calories
       <input name="food-calories" placeholder="New Food Calories">
     </label>
     <br>
@@ -33,7 +32,7 @@
     <input class="add-food" type="submit" value="Add Food">
   </form>
 
-  <h3>All Foods</h3>
+  <h1>All Available Foods</h1>
   <form class="search-form">
     Filter Foods:
     <input type="text" class="search" placeholder="Food Name">
@@ -58,9 +57,7 @@
 
 <!-- meals rendering -->
   <div class="meals_partial">
-    <h1>Quantified Self Meals</h1>
-
-    <h2>Meals</h2>
+    <h1>All Meals</h1>
 
     <h3>Breakfast</h3>
 
@@ -188,7 +185,7 @@
 <!-- totals table  -->
 <br>
 <br>
-<h3>Calorie Totals</h3>
+<h2>Total Calories</h2>
   <table class="totals_table">
     <tr>
       <td>Goal Calories</td>
@@ -203,17 +200,19 @@
       <td id="remaining"> </td>
     </tr>
   </table>
+  <br>
+  <br>
 
 <!-- add foods to meals -->
 
 
-<h3><a href="#create_new_food_link">Create New Food</a></h3>
-<br>
+
 <h2>Update Meals</h3>
   <form class="search-form">
-    Search by Name:
+    <p>
+      Search by Name (or <a href="#create_new_food_link">create a new food</a>)
+    </p>
     <input type="text" class="meals_search" placeholder="Food Name">
-
   </form>
 
 <div class="table">
@@ -232,8 +231,8 @@
 </table>
 </div>
 
-<h3>Add selected to:</h3>
-<div id="meal_selections">
+<div class="food-form" id="meal_selections">
+  Add selected food(s) to:
   <button type="submit" data-meal="breakfast">Breakfast</button>
   <button type="submit" data-meal="lunch">Lunch</button>
   <button type="submit" data-meal="dinner">Dinner</button>
@@ -244,6 +243,5 @@
 
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   <script src="main.bundle.js"></script>
-</div>
 </body>
 </html>
