@@ -76,11 +76,53 @@
       text-decoration: none;
     }*/
 
-
+html {
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+}
 
 
 body {
-  font-family: sans-serif;
+  vertical-align: middle;
+}
+.food-form {
+  max-width:400px;
+  margin:50px auto;
+}
+
+.food-form input {
+  margin: 0;
+  text-align: center;
+  outline:0;
+  border: 10px solid #F7F7F7;
+  width: 120%;
+  left: -10%;
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+.search-form {
+  max-width:400px;
+  margin:50px auto;
+}
+
+.search-form input {
+  margin: 0;
+  text-align: center;
+  outline:0;
+  border: 10px solid #F7F7F7;
+  width: 120%;
+  left: -10%;
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
 }
 
 .add-food {
@@ -99,6 +141,8 @@ body {
 table{
   border:1px solid #000;
   width: 300px;
+  margin:50px auto;
+
 }
 
 th {
@@ -111,8 +155,8 @@ td,th {
 }
 
 
-thead {color:green;}
-tbody {color:blue;}
+thead {color:#116293;}
+tbody {color:#181482;}
 tfoot {color:black;font-weight: bold;}
 
 .positive{
@@ -141,3 +185,27 @@ tfoot {color:black;font-weight: bold;}
   height: 20px;
   width: 20px;
 }
+
+h1, h2, h3 {
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+#meal_selections {
+  text-align: center;
+}
+
+#meal_selections button {
+  background-color: #16b7a4;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
