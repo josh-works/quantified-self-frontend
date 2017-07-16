@@ -17,7 +17,7 @@ Front-end available live at
 Backend available at:
 
 - Heroku: https://quantified-self-backend.herokuapp.com/
-- Github repo: https://github.com/caward12/quantified-self
+- Github repo: https://github.com/josh-works/quantified-self
 
 
 
@@ -68,7 +68,7 @@ This is the API endpoints for the backend of this application.
 
 The backend is live on Heroku: https://quantified-self-backend.herokuapp.com/api/v1
 
-View the repo: https://github.com/caward12/quantified-self
+View the repo: https://github.com/josh-works/quantified-self-frontend
 
 
 ## Foods
