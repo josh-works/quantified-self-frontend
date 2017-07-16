@@ -27,6 +27,8 @@ A single-page application that accepts food items, which can be stored in meal t
 
 There's no page reload, and every change is persisted in our database hosted on Heroku.
 
+![Adding/searching foods](./readme_resources/adding_searching_foods.gif)
+
 ## To install/run locally:
 
 Clone front-end _and_ back-end down:
